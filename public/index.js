@@ -1,5 +1,7 @@
 const checkBoxes = document.querySelectorAll('.checkbox')
+const contentBox = document.getElementById('content')
 const btn = document.getElementById('btn')
+const deshbhaktBox = document.getElementById('deshbhakt')
 
 let trueCount = 0;
 let topNumber
@@ -39,4 +41,8 @@ btn.addEventListener('mouseover', ()=>{
 })
 btn.addEventListener('mouseout', ()=>{
     console.log('mouse out')
+})
+btn.addEventListener('click', ()=>{
+    deshbhaktBox.style.visibility = 'visible'
+    contentBox.style.display = 'none'
 })
