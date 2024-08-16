@@ -1,0 +1,108 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    overflow: hidden;
+}
+
+main {
+    width: 100%;
+    height: 100vh;
+}
+#generatePDF{
+    position: absolute;
+    z-index: 20;
+}
+
+.video {
+    display: block;
+    height: 100vh;
+}
+
+main video {
+    position: fixed;
+    top: 0;
+    position: absolute;
+    transform: scale(1.25);
+    width: 100%;
+    height: 100vh;
+    filter: blur(2px);
+}
+
+.contentBox {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0px;
+}
+
+#content {
+    padding: 0 40px;
+    width: 730px;
+    height: 650px;
+    text-align: center;
+    z-index: 10;
+    background-color: rgba(255, 255, 255, 0.252);
+    border-radius: 10px;
+    /* display: flex;
+    flex-direction: column;
+    align-items: center; */
+}
+
+#content .points {
+    margin: 20px 0;
+}
+
+#content>h2 {
+    margin: 20px 0;
+    font-size: 40px;
+}
+
+#content button {
+    width: 135px;
+    height: 50px;
+    border: 1px solid;
+    border-radius: 10px;
+    margin: 30px 0 0 0;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    position: absolute;
+    top: var(--top);
+    left: var(--left);
+}
+
+.point {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    height: 50px;
+}
+
+.point input {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+#deshbhakt{
+    width: 50%;
+    height: 70%;
+    background-color: rgba(255, 255, 255, 0.405);
+    border-radius: 10px;
+    text-align: center;
+    align-content: center;
+    position: absolute;
+    z-index: 30;
+    display: none;
+    color: white;
+}
+#deshbhakt h3{
+    font-size: 40px;
+}
