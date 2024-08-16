@@ -1,7 +1,5 @@
 const checkBoxes = document.querySelectorAll('.checkbox')
 const btn = document.getElementById('btn')
-const contentBox = document.getElementById('content')
-const deshbhaktBox = document.getElementById('deshbhakt')
 
 let trueCount = 0;
 let topNumber
@@ -42,22 +40,3 @@ btn.addEventListener('mouseover', ()=>{
 btn.addEventListener('mouseout', ()=>{
     console.log('mouse out')
 })
-
-btn.addEventListener('click',()=>{
-    contentBox.style.display = 'none'
-    deshbhaktBox.style.display = 'block'
-})
-
-// const pdfbtn = document.getElementById('generatePDF')
-// pdfbtn.addEventListener('click',()=>{
-//     fetch('/generatePDF', {
-//         method: 'POST',
-//         headers: {
-//             'Content-Type': 'application/json'
-//         },
-//         // body: JSON.stringify({ email: email, password: password })
-//     }).then(response => response.text())
-//     .then(data=>{
-//         console.log(data)
-//     })
-// })

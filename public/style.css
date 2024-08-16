@@ -11,10 +11,6 @@ main {
     width: 100%;
     height: 100vh;
 }
-#generatePDF{
-    position: absolute;
-    z-index: 20;
-}
 
 .video {
     display: block;
@@ -89,20 +85,4 @@ main video {
     width: 20px;
     height: 20px;
     border-radius: 50%;
-}
-
-#deshbhakt{
-    width: 50%;
-    height: 70%;
-    background-color: rgba(255, 255, 255, 0.405);
-    border-radius: 10px;
-    text-align: center;
-    align-content: center;
-    position: absolute;
-    z-index: 30;
-    display: none;
-    color: white;
-}
-#deshbhakt h3{
-    font-size: 40px;
 }
