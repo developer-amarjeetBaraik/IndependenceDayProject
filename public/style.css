@@ -100,3 +100,9 @@ main video {
     color: white;
     visibility: hidden;
 }
+#generatePDF{
+    width: 100px;
+    height: 35px;
+    position: absolute;
+    z-index: 40;
+}

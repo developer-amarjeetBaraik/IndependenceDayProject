@@ -2,6 +2,7 @@ const checkBoxes = document.querySelectorAll('.checkbox')
 const contentBox = document.getElementById('content')
 const btn = document.getElementById('btn')
 const deshbhaktBox = document.getElementById('deshbhakt')
+const pdfBtn = document.getElementById('generatePDF')
 
 let trueCount = 0;
 let topNumber
@@ -45,4 +46,13 @@ btn.addEventListener('mouseout', ()=>{
 btn.addEventListener('click', ()=>{
     deshbhaktBox.style.visibility = 'visible'
     contentBox.style.display = 'none'
+})
+
+pdfBtn.addEventListener('click', ()=>{
+    fetch('/generatePDF',{
+        method: "POST"
+    }).then(response => response.text())
+    .then(data=>{
+        console.log(data)
+    })
 })
