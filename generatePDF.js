@@ -43,12 +43,6 @@ const headlineWidthCenter = headlineWidth / 2
 const points = ['I love my India and uphold its dignity at all times.', 'I respect women and am committed to ensuring their safety and dignity.', 'I respect and embrace diversity in religion, gender, caste, and region.', 'I uphold and respect the principles of the Indian Constitution.', 'I actively engage in questioning the government and value political literacy.', 'I take responsibility for the well-being of society and contribute to social upliftment.', 'I prioritize environmental stewardship for a sustainable future.', 'I focus on continuous education and personal growth.']
 
 
-//maping points
-function point() {
-    points.forEach((e, index) => {
-        return e
-    })
-}
 
 //font for points
 const fontForPoints = fs.readFileSync(path.join(__dirname, 'fonts', 'Caveat-VariableFont_wght.ttf'))
@@ -59,8 +53,8 @@ doc.addFileToVFS("Caveat-VariableFont_wght.ttf", base64FontForPoints);
 doc.addFont("Caveat-VariableFont_wght.ttf", "Caveat", "normal", "bold");
 
 //finding center of the page
-const verticalCenter = pageHeight / 2
-const horizontalCenter = pageWidth / 2
+const Xcenter = pageWidth / 2
+const Ycenter = pageHeight / 2
 
 
 //image to put on pdf center as water mark
@@ -72,8 +66,8 @@ const base64Image = image.toString('base64')
 const imageHeight = 3396 / 8 //in px
 const imageWidth = 2000 / 8 // in px
 
-const coordinateXforimage = horizontalCenter - (imageWidth / 2)
-const coordinateYforimage = verticalCenter - (imageHeight / 2)
+const coordinateXforimage = Xcenter - (imageWidth / 2)
+const coordinateYforimage = Ycenter - (imageHeight / 2)
 
 
 function generatePDF(name) {
@@ -100,12 +94,27 @@ function generatePDF(name) {
             textYcoordinate = textYcoordinate + 25 * countTwo
             countTwo++
         }
-        else{
+        else {
             textYcoordinate = textYcoordinate + 25 * countTwo
         }
-        console.log(textYcoordinate)
         doc.text(multilinePoint, textXcoordinate, textYcoordinate)
     })
+    doc.setFont("Edu", "bold")
+    let usernameWidth = doc.getTextWidth(username)
+    doc.text(username, Xcenter + 110 - (usernameWidth / 2), Ycenter + 250)
+
+    const x1 = Xcenter + 95;
+    const y1 = Ycenter + 257;
+    const x2 = Xcenter + 155;
+    const y2 = Ycenter + 257;
+
+    const signLineLength = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+    doc.line(x1 - (signLineLength / 2), y1, x2, y2)
+
+    doc.setFont("Caveat", "bold")
+    let DeshBhaktText = "The DeshBhakt"
+    let DeshBhaktWidth = doc.getTextWidth(DeshBhaktText)
+    doc.text(DeshBhaktText, Xcenter + 110 - (DeshBhaktWidth / 2), Ycenter + 270)
 
     doc.save('example.pdf')
 }
