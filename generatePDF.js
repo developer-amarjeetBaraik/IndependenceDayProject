@@ -44,10 +44,10 @@ const points = ['I love my India and uphold its dignity at all times.', 'I respe
 
 
 //maping points
-function point(){
+function point() {
     points.forEach((e, index) => {
-    return e
-})
+        return e
+    })
 }
 
 //font for points
@@ -85,27 +85,26 @@ function generatePDF(name) {
     doc.setFontSize(20)
     doc.setFont("Edu", "bold")
     const multilineHeadline = doc.splitTextToSize(headline, pageWidth - margin * 3.5)
-    doc.text(multilineHeadline, margin * 2, margin * 3)
+    doc.text(multilineHeadline, margin * 2, margin * 5)
     //adding points
     doc.setFontSize(20)
     doc.setFont("Caveat", "bold")
-    let pushPoint = 0
-    points.forEach((e, index)=>{
-    const point = `${index + 1} ${e}`
-    const multilinePoint = doc.splitTextToSize(point, pageWidth - margin * 6)
-    const linecount = multilinePoint.length
-    // if(linecount < pushPoint){
-    //     pushPoint = linecount
-    // }
-    doc.text(multilinePoint, margin * 3, margin * (9+index+2) + pushPoint*6)
-    if(linecount != 1){
-        // pushPoint = 0
-        pushPoint = linecount
-    }
-    // else if (linecount < pushPoint) {
-    //     pushPoint = 0
-    // }
-    console.log(linecount, pushPoint)
+    let countTwo = 1
+    points.forEach((e, index) => {
+        const point = `${index + 1} ${e}`
+        const multilinePoint = doc.splitTextToSize(point, pageWidth - margin * 6)
+        const linecount = multilinePoint.length
+        let textXcoordinate = margin * 3.5
+        let textYcoordinate = margin * (9 + index + 4)
+        if (linecount === 2) {
+            textYcoordinate = textYcoordinate + 25 * countTwo
+            countTwo++
+        }
+        else{
+            textYcoordinate = textYcoordinate + 25 * countTwo
+        }
+        console.log(textYcoordinate)
+        doc.text(multilinePoint, textXcoordinate, textYcoordinate)
     })
 
     doc.save('example.pdf')
