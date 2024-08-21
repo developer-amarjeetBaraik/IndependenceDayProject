@@ -3,6 +3,7 @@ const contentBox = document.getElementById('content')
 const btn = document.getElementById('btn')
 const deshbhaktBox = document.getElementById('deshbhakt')
 const pdfBtn = document.getElementById('generatePDF')
+const certificateBtn = document.getElementById('certificateBtn')
 
 let trueCount = 0;
 let topNumber
@@ -12,14 +13,11 @@ checkBoxes.forEach(e=>{
         
         if (e.checked === true) {
             trueCount++
-            console.log('added'),
-            (trueCount === 8)?btn.style.position = 'static':console.log('not entered')
+            (trueCount === 8)?btn.style.position = 'static':''
         }
         else{
             trueCount--
-            console.log('dedected')
         }
-        console.log(trueCount)
     })
 })
 
@@ -40,9 +38,6 @@ btn.addEventListener('mouseover', ()=>{
         }  
     }
 })
-btn.addEventListener('mouseout', ()=>{
-    console.log('mouse out')
-})
 btn.addEventListener('click', ()=>{
     deshbhaktBox.style.visibility = 'visible'
     contentBox.style.display = 'none'
@@ -55,4 +50,13 @@ pdfBtn.addEventListener('click', ()=>{
     .then(data=>{
         console.log(data)
     })
+})
+
+certificateBtn.addEventListener('click', ()=>{
+    if(trueCount <= 8){
+        alert('Something went wrong')
+    }
+    else{
+        console.log('fine')
+    }
 })

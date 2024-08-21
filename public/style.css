@@ -94,15 +94,32 @@ main video {
     border-radius: 10px;
     z-index: 30;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     font-size: 35px;
     color: white;
     visibility: hidden;
 }
+#deshbhakt #certificateBtn{
+    width: 150px;
+    height: 40px;
+    position: relative;
+    bottom: -135px;
+    border-radius: 10px;
+    cursor: pointer;
+}
 #generatePDF{
     width: 100px;
     height: 35px;
     position: absolute;
     z-index: 40;
+}
+
+.certificate{
+    position: absolute;
+    background-color: white;
+    border-radius: 10px;
+    width: 40vw;
+    height: 95vh;
 }
