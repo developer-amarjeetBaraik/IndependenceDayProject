@@ -12,6 +12,27 @@ main {
     height: 100vh;
 }
 
+/* HTML: <div class="loader"></div> */
+/* HTML: <div class="loader"></div> */
+#loader {
+    position: absolute;
+    z-index: 50;
+    display: none;
+    /*inbuilt feature*/
+    width: 50px;
+    --b: 8px; 
+    aspect-ratio: 1;
+    border-radius: 50%;
+    padding: 1px;
+    background: conic-gradient(#0000 10%,#f03355) content-box;
+    -webkit-mask:
+      repeating-conic-gradient(#0000 0deg,#000 1deg 20deg,#0000 21deg 36deg),
+      radial-gradient(farthest-side,#0000 calc(100% - var(--b) - 1px),#000 calc(100% - var(--b)));
+    -webkit-mask-composite: destination-in;
+            mask-composite: intersect;
+    animation:l4 1s infinite steps(10);
+  }
+  @keyframes l4 {to{transform: rotate(1turn)}}
 .video {
     display: block;
     height: 100vh;
@@ -101,6 +122,21 @@ main video {
     color: white;
     visibility: hidden;
 }
+#deshbhakt #nameInput{
+    padding: 0 10px;
+    width: 30%;
+    height: 30px;
+    border: none;
+    border-radius: 5px;
+    position: absolute;
+    bottom: 170px;
+    &:active{
+        border: none;
+    }
+    &::placeholder{
+        color: black;
+    }
+}
 #deshbhakt #certificateBtn{
     width: 150px;
     height: 40px;
@@ -109,17 +145,30 @@ main video {
     border-radius: 10px;
     cursor: pointer;
 }
-#generatePDF{
-    width: 100px;
-    height: 35px;
-    position: absolute;
-    z-index: 40;
-}
-
-.certificate{
+#certificate{
     position: absolute;
     background-color: white;
     border-radius: 10px;
-    width: 40vw;
+    width: 35vw;
     height: 95vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+#certificateImg{
+    width: 80%;
+    height: 95%;
+}
+#certificate button{
+    padding: 2px;
+    width: 28px;
+    height: 28px;
+    border: 1px solid black;
+    border-radius: 50%;
+    background: transparent;
+    position: absolute;
+    top: 40px;
+    right: 74px;
+    cursor: pointer;
 }

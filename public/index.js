@@ -2,15 +2,17 @@ const checkBoxes = document.querySelectorAll('.checkbox')
 const contentBox = document.getElementById('content')
 const btn = document.getElementById('btn')
 const deshbhaktBox = document.getElementById('deshbhakt')
-const pdfBtn = document.getElementById('generatePDF')
 const certificateBtn = document.getElementById('certificateBtn')
+const nameInput = document.getElementById('nameInput')
+const certificate = document.getElementById('certificate')
+const certificateImg = document.getElementById('certificateImg')
+const loader = document.getElementById('loader')
 
 let trueCount = 0;
 let topNumber
 let leftNumber
 checkBoxes.forEach(e=>{
     e.addEventListener('input',()=>{
-        
         if (e.checked === true) {
             trueCount++
             (trueCount === 8)?btn.style.position = 'static':''
@@ -43,20 +45,36 @@ btn.addEventListener('click', ()=>{
     contentBox.style.display = 'none'
 })
 
-pdfBtn.addEventListener('click', ()=>{
-    fetch('/generatePDF',{
-        method: "POST"
-    }).then(response => response.text())
-    .then(data=>{
-        console.log(data)
-    })
-})
 
 certificateBtn.addEventListener('click', ()=>{
-    if(trueCount <= 8){
+    console.log(nameInput.value)
+    console.log(nameInput.value.length)
+    console.log(trueCount)
+    if(trueCount < 8){
         alert('Something went wrong')
     }
-    else{
+    else if(trueCount === 8 && nameInput.value.length > 3){
         console.log('fine')
+        console.log(nameInput.value)
+        let username = nameInput.value
+        loader.style.display = 'block'
+        fetch('/generatePDF',{
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ username : username })
+        }).then(response => response.json())
+        .then(data=>{
+            console.log(data)
+            loader.style.display = 'none'
+            deshbhaktBox.style.display = 'none'
+            certificate.style.display = 'flex'
+            let pdfPath = data.base64string.slice(0,-1)
+            certificateImg.src = `data:application/pdf;base64,${data.base64string}`
+        })
+    }
+    else{
+        alert("Enter valid name")
     }
 })
