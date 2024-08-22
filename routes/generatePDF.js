@@ -9,7 +9,7 @@ const router = Router()
 
 router.post('/', (req, res) => {
     let { username } = req.body;
-    username = username.charAt(0).toUpperCase()+username.slice(1)
+    username = username.charAt(0).toUpperCase() + username.slice(1)
 
     const __filename = fileURLToPath(import.meta.url)
     const __dirname = path.dirname(__filename)
@@ -39,7 +39,6 @@ router.post('/', (req, res) => {
 
     //fetures for headline
     // let username = 'Amarjeet'
-    console.log(username.charAt(0).toUpperCase(),username.slice(0))
     const headline = `I, ${username}, hereby solemnly pledge to uphold and embody the following principles, which reflect the true spirit of being an Indian:`
 
     //headline is too long soo increse the line count
@@ -79,7 +78,7 @@ router.post('/', (req, res) => {
     const coordinateYforimage = Ycenter - (imageHeight / 2)
 
 
-    async function generatePDF() {
+    function generatePDF() {
         //adding reactangle
         doc.rect(margin, margin, pageWidth - margin * 2, pageHeight - margin * 2);
         //adding image
@@ -127,11 +126,12 @@ router.post('/', (req, res) => {
 
         doc.save('example.pdf')
 
-        //converting pdf into image
-
     }
 
+    //generating PDF
     generatePDF()
+
+
     //pdf file path
     const pdfPath = path.join('./', 'example.pdf')
     const file = fs.readFileSync(pdfPath, (err, data) => {
